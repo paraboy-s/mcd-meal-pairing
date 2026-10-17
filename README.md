@@ -11,9 +11,10 @@
 <img alt="deps" src="https://img.shields.io/badge/dependencies-0-brightgreen">
 <img alt="tests" src="https://img.shields.io/badge/tests-56%20passed-brightgreen">
 <img alt="MCP" src="https://img.shields.io/badge/MCP-mcd.cn-DA291C">
+<a href="https://paraboy-s.github.io/mcd-meal-pairing/preview.html"><img alt="preview" src="https://img.shields.io/badge/preview-live-FFBC0D"></a>
 </p>
 
-**[→ 打开输出预览页](docs/preview.html)**　三个真实场景的完整输出——预算 40、减脂 600 大卡、三人拼单 100 元。打开即看，不需要 Token、不需要安装。
+**[→ 打开输出预览页](https://paraboy-s.github.io/mcd-meal-pairing/preview.html)**　三个真实场景的完整输出——预算 40、减脂 600 大卡、三人拼单 100 元。打开即看，不需要 Token、不需要安装。
 
 ![McPair 的输出：三档方案、反事实与券诊断](assets/hero.svg)
 
@@ -143,7 +144,7 @@ cd ~/.workbuddy/skills/mcd-meal-pairing
 python scripts/pair.py --demo
 ```
 
-输出（真实结果，非示意图 —— 完整 JSON 见 [预览页](docs/preview.html)）：
+输出（真实结果，非示意图 —— 完整 JSON 见 [预览页](https://paraboy-s.github.io/mcd-meal-pairing/preview.html)）：
 
 ```
 枚举 1881 种搭配 → 1326 组可行
@@ -324,6 +325,8 @@ src/
 fixtures/                 真实接口截面数据（--demo 用）
 tests/                    56 个单测
 eval/                     基准与消融
+assets/                   首屏图（hero / pipeline，纯 SVG）
+docs/                     输出预览页（GitHub Pages 托管）
 ```
 
 ## 可用命令
