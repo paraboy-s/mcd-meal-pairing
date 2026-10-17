@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" width="1200" height="470" role="img" aria-label="McPair 三档方案输出示例">
+  <defs>
+    <linearGradient id="topstrip" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#DA291C"/>
+      <stop offset="50%" stop-color="#DA291C"/>
+      <stop offset="50%" stop-color="#FFBC0D"/>
+      <stop offset="100%" stop-color="#FFBC0D"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="470" fill="#FFF8EE"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#topstrip)"/>
+
+  <!-- 标题区 -->
+  <text x="48" y="66" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="28" font-weight="800" fill="#DA291C">「40 块以内，随便」</text>
+  <text x="48" y="102" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="17" fill="#7C6658">从 1881 种搭配里筛出 1326 组可行解，给你三档——并告诉你为什么不是另外那些。</text>
+
+  <!-- 卡片 1 -->
+  <g>
+    <rect x="48" y="130" width="352" height="230" rx="15" fill="#FFFFFF" stroke="#F0DCC4" stroke-width="2"/>
+    <text x="76" y="172" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="15" font-weight="700" fill="#A08D7E" letter-spacing="2">省钱档</text>
+    <text x="76" y="230" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="46" font-weight="800" fill="#DA291C">¥14.9</text>
+    <text x="76" y="262" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="14" fill="#7C6658">582 kcal · 蛋白 17g</text>
+    <line x1="76" y1="286" x2="372" y2="286" stroke="#F0DCC4" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <text x="76" y="316" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="15" font-weight="600" fill="#2C1B12">人气经典随心配</text>
+    <text x="76" y="342" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#A08D7E">价格优先，主餐不降级</text>
+  </g>
+
+  <!-- 卡片 2 推荐 -->
+  <g>
+    <rect x="424" y="114" width="352" height="262" rx="15" fill="#FFF4D2" stroke="#FFBC0D" stroke-width="3"/>
+    <rect x="452" y="112" width="62" height="21" rx="6" fill="#DA291C"/>
+    <text x="483" y="127" text-anchor="middle" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">推荐</text>
+    <text x="452" y="164" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="15" font-weight="700" fill="#B01F14" letter-spacing="2">均衡档</text>
+    <text x="452" y="222" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="50" font-weight="800" fill="#DA291C">¥34.5</text>
+    <text x="452" y="254" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="14" fill="#7C6658">827 kcal · 蛋白 27g</text>
+    <line x1="452" y1="278" x2="748" y2="278" stroke="#EFCF94" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <text x="452" y="308" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="15" font-weight="600" fill="#2C1B12">板烧鸡腿堡三件套</text>
+    <text x="452" y="334" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#7C6658">原价 ¥48，让利 ¥13.5</text>
+    <text x="452" y="356" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#7C6658">价格 / 热量 / 蛋白的平衡点</text>
+  </g>
+
+  <!-- 卡片 3 -->
+  <g>
+    <rect x="800" y="130" width="352" height="230" rx="15" fill="#FFFFFF" stroke="#F0DCC4" stroke-width="2"/>
+    <text x="828" y="172" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="15" font-weight="700" fill="#A08D7E" letter-spacing="2">放纵档</text>
+    <text x="828" y="230" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="46" font-weight="800" fill="#DA291C">¥39.5</text>
+    <text x="828" y="262" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="14" fill="#7C6658">920 kcal · 蛋白 29g</text>
+    <line x1="828" y1="286" x2="1124" y2="286" stroke="#F0DCC4" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <text x="828" y="316" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="15" font-weight="600" fill="#2C1B12">板烧鸡腿堡三件套 + 圆筒冰淇淋</text>
+    <text x="828" y="342" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#A08D7E">口味与蛋白优先</text>
+  </g>
+
+  <!-- 底部说明 -->
+  <rect x="48" y="384" width="1104" height="44" rx="10" fill="#FFFFFF" stroke="#F0DCC4" stroke-width="1.5"/>
+  <text x="70" y="412" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="14" font-weight="800" fill="#DA291C">反事实</text>
+  <text x="150" y="412" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="14" fill="#4A382D">预算从 ¥40 加到 ¥48，均衡档的主餐不会变——再往上加钱只换来一份小食，换不到更好的主餐。</text>
+
+  <text x="48" y="456" font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#A08D7E">价格与热量全部来自门店 MCP 实时接口与求解器运算 · 没有一个数字由语言模型给出</text>
+</svg>

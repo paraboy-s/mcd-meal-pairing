@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+_demo.json
+_squad.json
+_kcal.json

@@ -1,0 +1,7 @@
+* text=auto
+
+# 参赛声明必须与官方文件字节一致，禁止任何换行符转换
+CONTEST_DECLARATION.md -text
+*.bat text eol=crlf
+*.py text eol=lf
+*.md text eol=lf

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>McPair 麦麦配 · 输出预览</title>
+<style>
+  :root{
+    --bg:#FFF8EE; --panel:#FFFFFF; --panel-2:#FFF3E2; --line:#F0DCC4;
+    --text:#2C1B12; --muted:#7C6658; --dim:#A08D7E;
+    --red:#DA291C; --red-dark:#B01F14; --gold:#FFBC0D; --gold-soft:#FFF4D2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+    line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .strip{height:6px;background:linear-gradient(90deg,var(--red) 0 50%,var(--gold) 50% 100%)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+  header{padding:52px 0 34px;border-bottom:3px solid var(--gold)}
+  .brand{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .brand h1{position:relative;padding-bottom:8px}
+  .brand h1::after{content:"";position:absolute;left:0;bottom:0;width:44px;height:5px;
+    background:var(--gold);border-radius:3px}
+  h1{font-size:40px;letter-spacing:-1px;font-weight:800;color:var(--red)}
+  .cn{font-size:21px;color:var(--text);font-weight:600}
+  .en{font-size:13px;color:var(--dim);letter-spacing:2px;margin-top:2px}
+  .tag{margin-top:20px;font-size:17px;color:var(--text);max-width:740px}
+  .tag b{color:var(--red)}
+  .meta{margin-top:22px;display:flex;gap:9px;flex-wrap:wrap}
+  .pill{font-size:12.5px;color:var(--muted);border:1.5px solid var(--line);
+    padding:5px 13px;border-radius:999px;background:#fff;font-weight:500}
+  .pill b{color:var(--red);font-weight:700}
+
+  .tabs{display:flex;gap:9px;margin:34px 0 0;flex-wrap:wrap}
+  .tab{
+    background:#fff;border:2px solid var(--line);color:var(--muted);
+    padding:11px 21px;border-radius:12px;cursor:pointer;font-size:14.5px;
+    font-family:inherit;transition:.18s;font-weight:600;
+  }
+  .tab:hover{border-color:var(--gold);color:var(--text);transform:translateY(-1px)}
+  .tab.on{background:var(--red);border-color:var(--red);color:#fff;
+    box-shadow:0 5px 16px rgba(218,41,28,.28)}
+
+  section{padding:34px 0 10px;display:none}
+  section.on{display:block;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .ask{background:#fff;border-left:5px solid var(--gold);border-radius:0 12px 12px 0;
+    padding:17px 22px;margin-bottom:8px;box-shadow:0 2px 10px rgba(44,27,18,.05)}
+  .ask .who{font-size:11.5px;color:var(--dim);letter-spacing:1.5px;margin-bottom:5px;font-weight:600}
+  .ask .say{font-size:20px;font-weight:700}
+  .ask .say::before{content:"「";color:var(--gold)}
+  .ask .say::after{content:"」";color:var(--gold)}
+
+  .scan{font-size:13.5px;color:var(--muted);margin:14px 0 24px;padding-left:2px}
+  .scan b{color:var(--red);font-weight:700}
+
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+  .tier{background:var(--panel);border:2px solid var(--line);border-radius:15px;
+    padding:21px;position:relative;transition:.2s}
+  .tier:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(44,27,18,.08)}
+  .tier.best{background:var(--gold-soft);border-color:var(--gold);border-width:3px;
+    box-shadow:0 8px 24px rgba(255,188,13,.22)}
+  .tier.best::after{content:"推荐";position:absolute;top:-10px;left:20px;background:var(--red);
+    color:#fff;font-size:11px;font-weight:800;padding:2px 10px;border-radius:6px;letter-spacing:.5px}
+  .tier .name{font-size:13px;color:var(--muted);letter-spacing:2px;margin-bottom:12px;font-weight:700}
+  .tier.best .name{color:var(--red-dark)}
+  .tier .price{font-size:40px;font-weight:800;letter-spacing:-1.5px;line-height:1.1;color:var(--red)}
+  .tier .price small{font-size:16px;font-weight:600;color:var(--muted);letter-spacing:0}
+  .tier .k{font-size:13px;color:var(--muted);margin-top:6px;font-weight:500}
+  .tier hr{border:0;border-top:1.5px dashed var(--line);margin:15px 0 13px}
+  .tier.best hr{border-top-color:#EFCF94}
+  .tier .items{font-size:14.5px;line-height:1.85;font-weight:600}
+  .tier .note{font-size:12.5px;color:var(--muted);margin-top:9px}
+
+  .panelbox{background:#fff;border:1.5px solid var(--line);border-radius:15px;
+    padding:23px 25px;margin-top:16px;box-shadow:0 2px 10px rgba(44,27,18,.04)}
+  .panelbox h3{font-size:12.5px;letter-spacing:2.5px;color:var(--red);
+    font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .panelbox h3::before{content:"";width:14px;height:3px;background:var(--gold);border-radius:2px}
+  .panelbox p{font-size:14.5px;color:#4A382D;margin-bottom:9px}
+  .panelbox p:last-child{margin-bottom:0}
+  .panelbox .why{color:var(--red);font-weight:700}
+  .quote{font-size:15px;color:var(--text);border-left:3px solid var(--gold);
+    padding-left:15px;margin:11px 0;background:#FFFCF5;padding:11px 15px;border-radius:0 8px 8px 0}
+  .quote em{color:var(--red);font-style:normal;font-weight:700}
+
+  .rows{display:flex;flex-direction:column;gap:11px}
+  .row{display:grid;grid-template-columns:92px 1fr 62px 82px;gap:12px;align-items:center;font-size:14px}
+  .row .pname{font-weight:700}
+  .bar{height:8px;background:#F3E3CE;border-radius:5px;overflow:hidden}
+  .bar span{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--gold));border-radius:5px}
+  .row .pay{text-align:right;color:var(--muted);font-size:13.5px;font-weight:600}
+  .row .sc{text-align:right;font-weight:800;color:var(--red);font-size:15px}
+  .row .sub{grid-column:2 / 5;font-size:12.5px;color:var(--dim);margin-top:-4px}
+
+  footer{border-top:3px solid var(--gold);margin-top:46px;padding:28px 0 60px;
+    font-size:13.5px;color:var(--muted);line-height:1.95}
+  footer code{background:var(--panel-2);padding:2px 7px;border-radius:5px;
+    color:var(--red-dark);font-size:12.5px;font-family:ui-monospace,Consolas,monospace}
+  .notice{margin-top:16px;font-size:12px;color:var(--dim);
+    border-top:1px dashed var(--line);padding-top:14px}
+
+  @media(max-width:880px){
+    .tiers{grid-template-columns:1fr}
+    h1{font-size:28px}
+    .wrap{padding:0 18px}
+    header{padding:36px 0 26px}
+    .row{grid-template-columns:78px 1fr 58px}
+    .row .pay{display:none}
+    .row .sub{grid-column:2 / 4}
+  }
+</style>
+</head>
+<body>
+<div class="strip"></div>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <h1>McPair</h1>
+      <div class="cn">麦麦配 <span class="en">／ MEAL PAIRING</span></div>
+    </div>
+    <p class="tag">
+      不推荐套餐，只做最优配对。下面每一组数字都来自 <b>scripts/pair.py</b> 的真实运算，
+      数据取自麦当劳 MCP 门店接口截面 —— <b>不是示意图，也没有一个是语言模型编的</b>。
+    </p>
+    <div class="meta">
+      <span class="pill">枚举规模 <b>1,881 – 3,203 种</b></span>
+      <span class="pill">零第三方依赖 <b>0</b></span>
+      <span class="pill">单元测试 <b>56 通过</b></span>
+      <span class="pill">MCP <b>mcd.cn</b></span>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab on" data-t="s1">① 预算 40，随便配</button>
+    <button class="tab" data-t="s2">② 减脂 600 大卡</button>
+    <button class="tab" data-t="s3">③ 三人拼单 100 元</button>
+  </div>
+
+  <!-- 场景 1 -->
+  <section id="s1" class="on">
+    <div class="ask">
+      <div class="who">用户</div>
+      <div class="say">我中午想吃麦当劳，40 块以内</div>
+    </div>
+    <p class="scan">枚举 <b>1,881</b> 种组合 → 硬约束剪枝后剩 <b>1,326</b> 组可行 → 非支配排序 → 三档选优</p>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="name">省钱档</div>
+        <div class="price">¥14.9</div>
+        <div class="k">582 kcal · 蛋白 17 g</div>
+        <hr>
+        <div class="items">人气经典随心配</div>
+        <div class="note">价格优先，同时保住主餐不降级</div>
+      </div>
+      <div class="tier best">
+        <div class="name">均衡档</div>
+        <div class="price">¥34.5</div>
+        <div class="k">827 kcal · 蛋白 27 g</div>
+        <hr>
+        <div class="items">板烧鸡腿堡三件套</div>
+        <div class="note">原价 ¥48，让利 ¥13.5 · 价格 / 热量 / 蛋白的平衡点</div>
+      </div>
+      <div class="tier">
+        <div class="name">放纵档</div>
+        <div class="price">¥39.5</div>
+        <div class="k">920 kcal · 蛋白 29 g</div>
+        <hr>
+        <div class="items">板烧鸡腿堡三件套<br>＋ 圆筒冰淇淋</div>
+        <div class="note">口味与蛋白优先，接受更高热量</div>
+      </div>
+    </div>
+
+    <div class="panelbox">
+      <h3>反事实</h3>
+      <p>预算从 ¥40 加到 ¥48，均衡档的主餐<strong>不会变</strong>——再往上加钱，只会让你多一份小食或甜品，换不到更好的主餐。</p>
+    </div>
+
+    <div class="panelbox">
+      <h3>淘汰理由</h3>
+      <div class="rows">
+        <div class="row"><span class="pname">精选超值随心配</span><span style="color:var(--dim);font-size:13px">¥13.9 · 461 kcal</span><span class="sc">—</span><span class="pay">对比省钱档</span></div>
+        <div class="row"><span class="sub"><span class="why">各项指标被同价位方案全面压制</span></span></div>
+        <div class="row"><span class="pname">麦麦脆汁鸡 1 块</span><span style="color:var(--dim);font-size:13px">¥24.9 · 495 kcal</span><span class="sc">−27%</span><span class="pay">口味契合</span></div>
+        <div class="row"><span class="sub">对比均衡档，口味契合低 27%</span></div>
+        <div class="row"><span class="pname">蘸酱麦麦脆汁鸡</span><span style="color:var(--dim);font-size:13px">¥29.4 · 621 kcal</span><span class="sc">−37%</span><span class="pay">口味契合</span></div>
+        <div class="row"><span class="sub">对比均衡档，口味契合低 37%</span></div>
+      </div>
+    </div>
+
+    <div class="panelbox">
+      <h3>券诊断 · 6 张券</h3>
+      <p class="quote">当前时刻（18:57）你的 6 张券<em>一张都用不了</em>。最近可用：巧克力味厚松饼猪柳蛋套餐，10-18 05:00，约 10.1 小时后。</p>
+      <p class="quote">2 张券指向你几乎不点的品类 —— <em>券不是没用，是没发对人</em>。</p>
+      <p class="quote" style="border-left-color:#E8C8C2;color:#8C5A50">3 张券对应商品本店当前未售。</p>
+    </div>
+  </section>
+
+  <!-- 场景 2 -->
+  <section id="s2">
+    <div class="ask">
+      <div class="who">用户</div>
+      <div class="say">我在减脂，600 大卡以内，还要带杯饮料</div>
+    </div>
+    <p class="scan">枚举 <b>3,203</b> 种组合 → 通过 <b>881</b> 组 → 因营养表缺失剔除 <b>1,093</b> 组、超热量剔除 981 组、无饮品剔除 248 组</p>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="name">省钱档</div>
+        <div class="price">¥21.8</div>
+        <div class="k">380 kcal · 蛋白 16 g</div>
+        <hr>
+        <div class="items">蘸酱脆皮鸡块<br>＋ 燕麦奶铁</div>
+        <div class="note">原价 ¥42，让利 ¥20.2</div>
+      </div>
+      <div class="tier best">
+        <div class="name">均衡档</div>
+        <div class="price">¥21.8</div>
+        <div class="k">495 kcal · 蛋白 25 g</div>
+        <hr>
+        <div class="items">蘸酱麦麦脆汁鸡<br>＋ 燕麦奶铁</div>
+        <div class="note">原价 ¥41，让利 ¥19.2 · 三者平衡点</div>
+      </div>
+      <div class="tier">
+        <div class="name">放纵档</div>
+        <div class="price">¥24.9</div>
+        <div class="k">556 kcal · 蛋白 22 g</div>
+        <hr>
+        <div class="items">蘸酱麦麦脆汁鸡<br>＋ 阳光橙麦炫酷</div>
+        <div class="note">原价 ¥31，让利 ¥6.1</div>
+      </div>
+    </div>
+
+    <div class="panelbox">
+      <h3>它敢承认约束把选择压死了</h3>
+      <p>三档只差 <strong>¥3.1</strong>——不是没算开，而是你的约束把可行空间压窄了：<span class="why">再往上加钱，也换不到明显更好的组合</span>。</p>
+      <p>不加这句，用户会以为算法偷懒。加了这句，用户知道是自己设的条件紧。</p>
+    </div>
+
+    <div class="panelbox">
+      <h3>反事实</h3>
+      <p>预算从 ¥45 加到 ¥53，均衡档的主餐<strong>不会变</strong>——加钱只换来一份小食或甜品。</p>
+    </div>
+  </section>
+
+  <!-- 场景 3 -->
+  <section id="s3">
+    <div class="ask">
+      <div class="who">用户</div>
+      <div class="say">我们三个人一起吃，预算 100</div>
+    </div>
+    <p class="scan">小明控卡 600 且不吃辣 · 小美无限制 · 老王想吃辣 ｜ 枚举 <b>2,313</b> 种分配 → <b>1,179</b> 组可行 → max-min 选优</p>
+
+    <div class="tiers">
+      <div class="tier best" style="grid-column:1 / -1">
+        <div class="name">最公平的一单</div>
+        <div class="price">¥99.5 <small>／ 原价 ¥113，让利 ¥13.5</small></div>
+        <div class="k">5 件商品 · 最低满意度 0.77</div>
+        <hr>
+        <div class="rows">
+          <div class="row"><span class="pname">小明</span><div class="bar"><span style="width:77%"></span></div><span class="sc">0.77</span><span class="pay">分账 ¥26.5</span></div>
+          <div class="row"><span class="sub">麦麦脆汁鸡 1 块 ＋ 怡泉+C · 438 kcal ｜ 最想要的「板烧鸡腿堡」没点上</span></div>
+          <div class="row"><span class="pname">小美</span><div class="bar"><span style="width:77%"></span></div><span class="sc">0.77</span><span class="pay">分账 ¥39.5</span></div>
+          <div class="row"><span class="sub">培根蔬萃双层牛堡 ＋ 薯条 · 731 kcal ｜ 最想要的「巨无霸」没点上</span></div>
+          <div class="row"><span class="pname">老王</span><div class="bar"><span style="width:83%"></span></div><span class="sc">0.83</span><span class="pay">分账 ¥33.5</span></div>
+          <div class="row"><span class="sub">麦辣鸡腿汉堡三件套 · 921 kcal</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panelbox">
+      <h3>为什么不用「总分最高」那一单</h3>
+      <p class="quote">只照顾老王：他能到 <em>0.91</em>，但小美会掉到 <em>0.76</em>，max-min 只剩 0.76 → <span class="why">否决</span>。</p>
+      <p>这是罗尔斯意义上的差异原则：不追求总满意度最大，只保证<strong>最不满意的那个人不被牺牲</strong>。</p>
+      <p style="color:var(--muted);font-size:13.5px">21 个多人场景的实测：19/21 里公平解与效率解是同一单——公平通常不花钱。只在预算紧到必须有人让步时，才会分离。</p>
+    </div>
+
+    <div class="panelbox">
+      <h3>把让步摆到台面上</h3>
+      <p>三个人各自最想要的主餐<strong>都没点上</strong>，这不是失败，是预算 100 下的必然。</p>
+      <p>拼单最容易吵架的那句话，在点单前就说出来了。</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>本页所有数字来自 <code>python scripts/pair.py --demo</code> 与 <code>python -m src.cli --budget 45 --kcal-cap 600 --need-drink --json</code> 的真实输出，数据源为 <code>fixtures/</code> 中固化的麦当劳 MCP 门店接口截面。</p>
+    <p>McPair 是一个给智能体执行的 <strong>Skill</strong>：语言模型只负责听懂人话和把结果说成人话，<strong>价格、热量、用券全部由确定性代码计算</strong> —— 每个数字都能追溯到某一次工具返回。</p>
+    <p class="notice">
+      本项目为「麦当劳程序员创意开发大赛」参赛作品，由参赛者独立开发，<strong>非麦当劳官方产品</strong>，与麦当劳中国无隶属关系。
+      页面仅采用红黄配色，<strong>未使用任何麦当劳商标、标识或官方素材</strong>。
+      餐品信息、价格及供应状态以麦当劳官方渠道的实时结果为准。
+    </p>
+  </footer>
+
+</div>
+<script>
+  document.querySelectorAll('.tab').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('on') });
+      document.querySelectorAll('section').forEach(function(s){ s.classList.remove('on') });
+      btn.classList.add('on');
+      document.getElementById(btn.dataset.t).classList.add('on');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+</script>
+</body>
+</html>

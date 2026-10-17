@@ -1,0 +1,125 @@
+[
+  {
+    "orderId": "REDACTED-ORDER-01",
+    "createTime": "2026-09-03 12:09:01",
+    "beType": "1",
+    "storeName": "麦当劳日照芒果时代广场餐厅",
+    "total": 25.0,
+    "items": [
+      {
+        "productCode": "9900005432",
+        "productName": "麦麦脆汁鸡1块(鸡腿或带骨里脊)",
+        "quantity": 1
+      },
+      {
+        "productCode": "515837",
+        "productName": "圆筒冰淇淋",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "orderId": "REDACTED-ORDER-02",
+    "createTime": "2026-07-23 19:13:03",
+    "beType": "1",
+    "storeName": "麦当劳北京育慧南路餐厅",
+    "total": 15.0,
+    "items": [
+      {
+        "productCode": "9900005432",
+        "productName": "麦麦脆汁鸡1块(鸡腿或带骨里脊)",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "orderId": "REDACTED-ORDER-03",
+    "createTime": "2026-04-24 22:33:57",
+    "beType": "1",
+    "storeName": "麦当劳北京和平街北口餐厅",
+    "total": 9.9,
+    "items": [
+      {
+        "productCode": "9900013817",
+        "productName": "麦麦脆汁鸡",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "orderId": "REDACTED-ORDER-04",
+    "createTime": "2025-12-27 19:43:48",
+    "beType": "1",
+    "storeName": "麦当劳北京和平街北口餐厅",
+    "total": 13.5,
+    "items": [
+      {
+        "productCode": "507165",
+        "productName": "麦麦脆汁鸡-带骨里脊",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "orderId": "REDACTED-ORDER-05",
+    "createTime": "2025-12-27 19:29:13",
+    "beType": "1",
+    "storeName": "麦当劳北京和平街北口餐厅",
+    "total": 43.4,
+    "items": [
+      {
+        "productCode": "9900011802",
+        "productName": "爆脆星星盐酥风味脆汁鸡",
+        "quantity": 1
+      },
+      {
+        "productCode": "9900005456",
+        "productName": "麦辣鸡腿汉堡三件套",
+        "quantity": 1
+      },
+      {
+        "productCode": "505416",
+        "productName": "麦麦脆汁鸡-琵琶腿",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "orderId": "REDACTED-ORDER-06",
+    "createTime": "2025-12-15 20:17:59",
+    "beType": "1",
+    "storeName": "麦当劳北京和平街北口餐厅",
+    "total": 32.4,
+    "items": [
+      {
+        "productCode": "1440",
+        "productName": "麦辣鸡腿汉堡",
+        "quantity": 1
+      },
+      {
+        "productCode": "9900011802",
+        "productName": "爆脆星星盐酥风味脆汁鸡",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "orderId": "REDACTED-ORDER-07",
+    "createTime": "2025-10-31 17:23:11",
+    "beType": "1",
+    "storeName": "麦当劳北京和平街北口餐厅",
+    "total": 37.4,
+    "items": [
+      {
+        "productCode": "9900006219",
+        "productName": "大堡口福三件套",
+        "quantity": 1
+      },
+      {
+        "productCode": "9900005432",
+        "productName": "麦麦脆汁鸡1块(鸡腿或带骨里脊)",
+        "quantity": 1
+      }
+    ]
+  }
+]
